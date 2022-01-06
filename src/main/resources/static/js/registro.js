@@ -31,8 +31,4 @@ async function registrarUsuario(){
         },
         body: JSON.stringify(datos)//Convierte objeto js a string json
     });
-    const usuarios = await request.json(); //CONVIERTE LA REQUEST A JSON Y LA ASIGNA A usuarios
-
-    console.log(usuarios);
-
 }
