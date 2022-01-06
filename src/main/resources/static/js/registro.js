@@ -21,7 +21,7 @@ async function registrarUsuario(){
         return;
     }
 
-    const request = await fetch('api/usuarios'{
+    const request = await fetch('api/usuarios',{
         // AWAIT ESPERA EL RESULTADO DE LA FUNCION Y LA GUARDA EN REQUEST
         // AL UTILIZAR AWAIT SE TIENE QUE UTILIZAR ASYNC
         method: 'POST',
