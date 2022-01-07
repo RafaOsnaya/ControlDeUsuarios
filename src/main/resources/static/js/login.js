@@ -22,7 +22,9 @@ async function iniciarSesion(){
     });
     const respuesta = await request.text(); //CONVIERTE LA REQUEST A JSON Y LA ASIGNA A respuesta
 
-    if (respuesta == 'OK'){
+    if (respuesta != 'FAIL'){
+        localStorage.token = respuesta; // guardamos el token en el localstorage
+        localStorage.email = datos.email;
         window.location.href = 'usuarios.html'
     }else {
         alert("Las credenciales son incorrectas");

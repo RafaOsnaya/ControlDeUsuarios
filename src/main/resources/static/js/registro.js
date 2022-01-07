@@ -31,4 +31,6 @@ async function registrarUsuario(){
         },
         body: JSON.stringify(datos)//Convierte objeto js a string json
     });
+    alert("¡Cuenta creada con exito!");
+    window.location.href = 'login.html'
 }

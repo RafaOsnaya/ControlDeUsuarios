@@ -36,7 +36,7 @@ public class UsuarioDaoImp implements UsuarioDao{
     }
 
     @Override
-    public boolean verificarCredenciales(Usuario usuario){
+    public Usuario obtenerUsuarioPorCredenciales(Usuario usuario){
         //Consulta con hibernate
         String query = "FROM Usuario WHERE email = :email ";  //Comparación con db
         List<Usuario> lista = entityManager.createQuery(query)
@@ -44,7 +44,7 @@ public class UsuarioDaoImp implements UsuarioDao{
                   .getResultList(); //Realiza la consulta y obtiene el resultado
 
         if (lista.isEmpty()){
-            return false;
+            return null;
         }
 
         //Otenemos el elemento y la contraseña del objeto registrado
@@ -54,7 +54,10 @@ public class UsuarioDaoImp implements UsuarioDao{
 
         //Comparamos la contraseña de la cifrada en la base
         // de datos con la proporcionada por el usuario en el login
-        return argon2.verify(passwordHashed, usuario.getPassword());//Devuelve booleano
+        if (argon2.verify(passwordHashed, usuario.getPassword())){
+            return lista.get(0);
+        }
+        return null;
 
     }
 
